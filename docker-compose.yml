@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: taskforge_postgres
+    environment:
+      POSTGRES_DB: taskforge
+      POSTGRES_USER: taskforge
+      POSTGRES_PASSWORD: taskforge
+    ports:
+      - "5433:5432"
+    volumes:
+      - taskforge_pg:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: taskforge_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: taskforge
+      RABBITMQ_DEFAULT_PASS: taskforge
+
+volumes:
+  taskforge_pg:

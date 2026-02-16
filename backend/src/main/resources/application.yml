@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskforge
+    username: taskforge
+    password: taskforge
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: taskforge
+    password: taskforge
+
+app:
+  security:
+    jwt:
+      issuer: taskforge
+      secret: "[>cn*J(_s4$Kn];Po@SW7p[s94Pa>W:s"
+      accessTokenMinutes: 60
